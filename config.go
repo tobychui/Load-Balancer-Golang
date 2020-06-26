@@ -7,7 +7,6 @@ import (
   "gopkg.in/yaml.v2"
 )
 
-const configName string = "config.yml"
 
 func validation(condition bool, errorMessage string) string {
   if condition {
@@ -69,10 +68,10 @@ func setDefaultValues(proxy *Proxy) {
   }
 }
 
-func ReadConfig() (Proxy, error) {
+func ReadConfig(filepath string) (Proxy, error) {
   proxy := Proxy{}
 
-  file, err := ioutil.ReadFile(configName)
+  file, err := ioutil.ReadFile(filepath)
   if err != nil {
     return proxy, err
   }

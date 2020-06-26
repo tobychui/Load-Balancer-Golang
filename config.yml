@@ -1,8 +1,15 @@
 ---
 host: localhost
 scheme: 'http'
+port: 80
 servers:
   - name: Server A
     scheme: http
     host: localhost
-    port: 3000
+    port: 8080
+
+  - name: Server B
+    scheme: http
+    host: localhost
+    port: 8081
+

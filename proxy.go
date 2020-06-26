@@ -9,6 +9,7 @@ import (
     "strings"
     "strconv"
     "math"
+    "log"
 )
 
 type Proxy struct {
@@ -80,7 +81,7 @@ func (proxy Proxy)ReverseProxy(w http.ResponseWriter, r *http.Request, server Se
     LogErr("connection refused")
     return 0, err
   }
-  LogInfo("Recieved response: " + strconv.Itoa(resp.StatusCode))
+  log.Println("Recieved response: " + strconv.Itoa(resp.StatusCode))
 
   bodyBytes, err := ioutil.ReadAll(resp.Body)
   if err != nil {
@@ -108,8 +109,8 @@ func (proxy Proxy)attemptServers(w http.ResponseWriter, r *http.Request, ignoreL
   }
 
   var server = proxy.chooseServer(ignoreList)
-  LogInfo("Got request: " + r.RequestURI)
-  LogInfo("Sending to server: " + server.Name)
+  log.Println("Got request: " + r.RequestURI)
+  log.Println("Sending to server: " + server.Name)
 
   server.Connections += 1
   _, err := proxy.ReverseProxy(w, r, *server)
@@ -122,7 +123,7 @@ func (proxy Proxy)attemptServers(w http.ResponseWriter, r *http.Request, ignoreL
     return
   }
 
-  LogInfo("Responded to request successfuly")
+  log.Println("Responded to request successfuly")
 }
 
 func (proxy Proxy)handler(w http.ResponseWriter, r *http.Request) {

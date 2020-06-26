@@ -1,38 +1,23 @@
 package main
 
 import (
-  "fmt"
+  "log"
   "time"
-  "os"
 )
 
 // HH/mm/SS DD/MM/YYYY
 const formatString string = "15:04:05 01/02/2006"
 
-func LogInfo(msg string) {
-  printTime()
-  fmt.Println(msg)
-}
-
 func LogWarn(msg string) {
-  printTime()
-  fmt.Print("[Warning] ")
-  fmt.Println(msg)
+  log.Println("[Warning] " + msg)
 }
 
 func LogErr(msg string) {
-  printTime()
-  fmt.Print("[ERROR] ")
-  fmt.Println(msg)
+  log.Println("[ERROR] " + msg)
 }
 
 func LogErrAndCrash(msg string) {
-  LogErr(msg)
-  os.Exit(1)
-}
-
-func printTime() {
-  fmt.Print("[" + getFormattedTime() + "] ")
+  panic(msg)
 }
 
 func getFormattedTime() string {
