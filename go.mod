@@ -1,4 +1,4 @@
-module aprintlab.io/network/load-balancer.v1
+module github.com/tobychui/load-balancer.v1
 
 go 1.13
 
