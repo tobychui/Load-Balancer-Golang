@@ -1,7 +1,7 @@
 # Load Balancer
 A simple load balancer / reverse proxy written in GoLang.
 
-Forked from [](https://github.com/d12/Load-Balancer-Golang), modified by tobychui for my own network load-balacning purpose
+Forked from [this repo](https://github.com/d12/Load-Balancer-Golang), modified by tobychui for my own network load-balacning purpose
 
 ## Features
 - Acts as a reverse proxy, sitting between clients and web servers.
